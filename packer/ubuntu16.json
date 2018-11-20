@@ -1,0 +1,26 @@
+{
+  "builders": [
+    {
+    "type": "googlecompute",
+    "project_id": "infra-222321",
+    "image_name": "reddit-base-{{timestamp}}",
+    "source_image": "ubuntu-1604-xenial-v20170815a",
+    "zone": "australia-southeast1-b",
+    "ssh_username": "aliaksandr",
+    "machine_type": "g1-small"
+    }
+  ],
+  "provisioners": [
+    {
+    "type": "shell",
+    "script": "scripts/install_ruby.sh",
+    "execute_command": "sudo {{.Path}}"
+    }    ,
+    {
+    "type": "shell",
+    "script": "scripts/install_mongodb.sh",
+    "execute_command": "sudo {{.Path}}"
+   }
+  ]
+}
+ 
